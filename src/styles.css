@@ -4,3 +4,22 @@
 html, body {
   margin: 0;
 }
+
+.outlet {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.row-bet-cen {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.col-st-str {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}

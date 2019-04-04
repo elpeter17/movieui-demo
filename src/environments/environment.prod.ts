@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  mainUrl: 'http://server.com:8080',
+  mocking: false
 };

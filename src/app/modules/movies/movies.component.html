@@ -1,3 +1,32 @@
-<p>
-  movies works!
-</p>
+<section class="col-st-str">
+  <div class="row-bet-cen">
+    <h1>Lista de películas</h1>
+    <button (click)="createMovie()">Crear película</button>
+  </div>
+  <table class="table">
+    <thead>
+      <th>Título</th>
+      <th>Año</th>
+      <th>Calificación</th>
+      <th>Directores</th>
+      <th>Acciones</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let movie of movies" class="border1">
+        <td>{{ movie.title }}</td>
+        <td>{{ movie.year }}</td>
+        <td>{{ movie.rating }}</td>
+        <td>
+          <div *ngFor="let director of movie.directors">
+            <span>{{ director.name }}</span>
+            <br>
+          </div>
+        </td>
+        <td>
+          <button (click)="editMovie(movie)">Editar</button>
+          <button>Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
