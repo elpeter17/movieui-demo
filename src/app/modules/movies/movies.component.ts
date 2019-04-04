@@ -49,7 +49,8 @@ export class MoviesComponent {
   }
 
   public deleteMovie(movie: Movie) {
-
+    this.movieService.delete(movie);
+    this.initComponent();
   }
 
 }

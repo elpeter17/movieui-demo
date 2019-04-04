@@ -55,4 +55,9 @@ export class MovieMocks {
     });
     return this.movies.find(item => movie.id === item.id);
   }
+
+  public delete(movie: Movie) {
+    const movieToDelete = this.movies.findIndex(item => movie.id === item.id);
+    this.movies.splice(movieToDelete, 1);
+  }
 }

@@ -32,4 +32,12 @@ export class MovieService extends ApiService {
     return update;
   }
 
+  public delete(movie: Movie) {
+    if (this.mocking) {
+      this.movieMocks.delete(movie);
+    } else {
+      this.http.delete<Movie>(`${this.endpoints.movies}/${movie.id}`);
+    }
+  }
+
 }
