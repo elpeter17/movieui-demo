@@ -1,11 +1,17 @@
 import { Movie } from '../movie.model';
-import { DIRECTORS } from './director-mocks';
 import { Injectable } from '@angular/core';
+import { DirectorMocks } from './director-mocks';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieMocks {
+
+  constructor(
+    private directorMocks: DirectorMocks
+  ) {
+
+  }
 
   private movies: Movie[] = [{
     id: 1,
@@ -13,8 +19,8 @@ export class MovieMocks {
     year: 2019,
     rating: 4,
     directors: [
-      DIRECTORS[2],
-      DIRECTORS[3],
+      this.directorMocks.get(3),
+      this.directorMocks.get(4)
     ]
   }, {
     id: 2,
@@ -22,7 +28,7 @@ export class MovieMocks {
     year: 2003,
     rating: 5,
     directors: [
-      DIRECTORS[0]
+      this.directorMocks.get(1)
     ]
   }, {
     id: 3,
@@ -30,7 +36,7 @@ export class MovieMocks {
     year: 1972,
     rating: 5,
     directors: [
-      DIRECTORS[1]
+      this.directorMocks.get(2)
     ]
   }];
 

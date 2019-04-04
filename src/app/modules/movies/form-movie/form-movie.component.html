@@ -18,6 +18,13 @@
       <option value="5">5</option>
     </select>
 
+    <label for="directors">Directores</label>
+    <select id="directors" formControlName="directors" multiple>
+      <option *ngFor="let director of directors" [value]="director.id">
+        {{ director.name }}
+      </option>
+    </select>
+
     <button (click)="saveMovie()" [disabled]="getForm().invalid">Guardar</button>
   </div>
 </form>
