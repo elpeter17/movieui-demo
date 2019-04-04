@@ -8,6 +8,7 @@ html, body {
 .outlet {
   margin-left: 10px;
   margin-right: 10px;
+  margin-top: 20px;
 }
 
 .row-bet-cen {
@@ -17,9 +18,20 @@ html, body {
   align-items: center;
 }
 
+.col-st-cen {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .col-st-str {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
+}
+
+.flexrow-80 {
+  width: 80%;
 }

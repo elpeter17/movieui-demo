@@ -5,11 +5,13 @@ import { MoviesRoutes } from './movies.routing';
 import { CreateMovieComponent } from './create-movie/create-movie.component';
 import { EditMovieComponent } from './edit-movie/edit-movie.component';
 import { FormMovieComponent } from './form-movie/form-movie.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    MoviesRoutes
+    MoviesRoutes,
+    ReactiveFormsModule,
   ],
   declarations: [
     MoviesComponent,

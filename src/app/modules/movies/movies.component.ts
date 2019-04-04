@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Movie } from 'src/app/models/movie.model';
 import { MovieService } from 'src/app/api/movie.service';
 import { Router } from '@angular/router';
 import { moviesPaths } from 'src/app/utils/front-paths';
+import { Observable, isObservable } from 'rxjs';
 
 @Component({
   selector: 'app-movies',
@@ -21,13 +22,18 @@ export class MoviesComponent {
   }
 
   private initComponent() {
-    this.movieService.index().subscribe(
-      movies => {
-        this.movies = movies;
-      }, error => {
-        console.log(error);
-      }
-    );
+    const resource = this.movieService.index();
+    if (isObservable(resource)) {
+      resource.subscribe(
+        response => {
+          this.movies = response;
+        }, error => {
+          console.log(error);
+        }
+      );
+    } else {
+      this.movies = resource;
+    }
   }
 
   public createMovie() {

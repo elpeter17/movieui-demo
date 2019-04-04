@@ -1,3 +1,23 @@
-<p>
-  form-movie works!
-</p>
+<form class="col-st-cen" [formGroup]="getForm()">
+  <div class="col-st-str flexrow-80">
+    <input type="hidden" formControlName="id">
+
+    <label for="title">Título</label>
+    <input id="title" formControlName="title" placeholder="Título" maxlength="50">
+
+    <label for="year">Año</label>
+    <input id="year" formControlName="year" placeholder="Año" max="2019" type="number">
+
+    <label for="rating">Calificación</label>
+    <select id="rating" formControlName="rating">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+
+    <button (click)="saveMovie()" [disabled]="getForm().invalid">Guardar</button>
+  </div>
+</form>
