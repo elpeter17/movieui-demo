@@ -3,3 +3,9 @@ export const moviesPaths = {
   createMovie: 'movies/create',
   editMovie: 'movies/:id/edit'
 };
+
+export const directorPaths = {
+  directors: 'directors',
+  createDirector: 'directors/create',
+  editDirector: 'directors/:id/edit'
+};

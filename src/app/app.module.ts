@@ -8,6 +8,7 @@ import { ComponentsModule } from './components/components.module';
 import { MaterialModule } from './modules/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
+import { DirectorsModule } from './modules/directors/directors.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     AppRoutes,
     ComponentsModule,
-    MoviesModule
+    MoviesModule,
+    DirectorsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

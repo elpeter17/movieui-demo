@@ -1,0 +1,46 @@
+<section class="col-st-str">
+  <div class="row-bet-cen">
+    <h1>Directores</h1>
+    <button mat-raised-button color="primary" (click)="addDirector()">Agregar director</button>
+  </div>
+
+  <section class="col-st-str">
+
+    <div class="col-self-cen row-cen-cen">
+      <mat-form-field class="flexrow-40">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
+      </mat-form-field>
+    </div>
+
+    <table mat-table [dataSource]="srcListDirectors" matSort>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+        <td mat-cell *matCellDef="let row"> {{ row.name }} </td>
+      </ng-container>
+
+      <!-- Gender Column -->
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Género </th>
+        <td mat-cell *matCellDef="let row"> {{ row.gender }} </td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button color="accent" (click)="editDirector(row)"><mat-icon>edit</mat-icon></button>
+          <button mat-icon-button color="warn" (click)="deleteDirector(row)"><mat-icon>delete</mat-icon></button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+  </section>
+
+</section>

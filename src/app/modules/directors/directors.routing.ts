@@ -1,10 +1,11 @@
 import { Routes, RouterModule } from '@angular/router';
-import { DirectorsComponent } from './directors.component';
+import { ListDirectorsComponent } from './list-directors/list-directors.component';
+import { directorPaths } from 'src/app/utils/front-paths';
 
 const routes: Routes = [
   {
-    path: 'directors',
-    component: DirectorsComponent
+    path: directorPaths.directors,
+    component: ListDirectorsComponent
   }
 ];
 

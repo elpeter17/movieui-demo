@@ -1,0 +1,15 @@
+<section class="col-st-str col-gap-10">
+
+  <header class="row-bet-cen">
+    <h1 mat-dialog-title>
+      {{ data.forCreate ? 'Agregar director' : 'Editar director' }}
+    </h1>
+    <button mat-icon-button [mat-dialog-close]="false"><mat-icon>close</mat-icon></button>
+  </header>
+
+  <div mat-dialog-content>
+    <app-form-director [forCreate]="data.forCreate" [(director)]="data.director" (onSubmit)="onSubmit()">
+    </app-form-director>
+  </div>
+
+</section>

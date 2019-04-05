@@ -1,6 +1,7 @@
 import { Movie } from '../movie.model';
 import { Injectable } from '@angular/core';
 import { DirectorMocks } from './director-mocks';
+import { Director } from '../director.model';
 
 @Injectable({
   providedIn: 'root'
@@ -49,11 +50,13 @@ export class MovieMocks {
   }
 
   public create(movie: Movie): Movie {
+    this.assignDirectors(movie);
     this.movies.push(movie);
     return movie;
   }
 
   public update(movie: Movie): Movie {
+    this.assignDirectors(movie);
     this.movies.map((item: Movie, index: number, array: Movie[]) => {
       if (movie.id === item.id) {
         array[index] = movie;
@@ -65,5 +68,12 @@ export class MovieMocks {
   public delete(movie: Movie) {
     const movieToDelete = this.movies.findIndex(item => movie.id === item.id);
     this.movies.splice(movieToDelete, 1);
+  }
+
+  private assignDirectors(movie: Movie) {
+    movie.directors = [];
+    movie.directorIds.forEach(directorId => {
+      movie.directors.push(this.directorMocks.get(directorId));
+    });
   }
 }

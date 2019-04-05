@@ -47,14 +47,4 @@ export class FormMovieComponent implements OnInit {
     this.onSaveMovie.emit(this.getForm().value);
   }
 
-  public markedDirector(director: Director): boolean {
-    const found = this.directors.find(item => director.id === item.id);
-    console.log(found);
-    if (typeof found !== 'undefined') {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
 }

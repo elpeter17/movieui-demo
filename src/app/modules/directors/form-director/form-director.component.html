@@ -1,0 +1,49 @@
+<form class="col-st-str"
+  #formDirector="ngForm" (ngSubmit)="submit()">
+
+  <mat-form-field appearance="outline">
+
+    <mat-label>Nombre</mat-label>
+    <input matInput placeholder="Nombre"
+      [(ngModel)]="director.name" id="name" name="name" #name="ngModel"
+      required minlength="5" maxlength="50">
+    <mat-icon matSuffix>account_box</mat-icon>
+
+    <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
+      <div *ngIf="name?.errors?.required">
+        El nombre es requerido.
+      </div>
+      <div *ngIf="!name?.errors?.required && name?.errors?.minlength">
+        Se permiten mínimo 5 caracteres
+      </div>
+      <div *ngIf="!name?.errors?.required && name?.errors?.maxlength">
+        Se permiten máximo 50 caracteres
+      </div>
+    </mat-error>
+
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+
+    <mat-label>Género</mat-label>
+    <input matInput placeholder="Género"
+      [(ngModel)]="director.gender" id="gender" name="gender" #gender="ngModel"
+      required maxlength="1">
+    <mat-icon matSuffix>category</mat-icon>
+
+    <mat-error *ngIf="gender.invalid && (gender.dirty || gender.touched)">
+      <div *ngIf="gender?.errors?.required">
+        El género es requerido
+      </div>
+      <div *ngIf="!name?.errors?.required && name?.errors?.maxlength">
+        Se permite máximo 1 caracter
+      </div>
+    </mat-error>
+
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" class="self-ce"
+    type="submit" [disabled]="!formDirector.form.valid">
+    {{ forCreate ? 'Crear' : 'Guardar' }}
+  </button>
+</form>

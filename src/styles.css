@@ -18,6 +18,20 @@ html, body {
   align-items: center;
 }
 
+.row-cen-cen {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.row-aro-cen {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .col-st-cen {
   display: flex;
   flex-direction: column;
@@ -32,6 +46,23 @@ html, body {
   align-items: stretch;
 }
 
+.col-gap-10 > *:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.flexrow-40 {
+  width: 40%;
+}
+
+
 .flexrow-80 {
   width: 80%;
+}
+
+.self-ce {
+  align-self: center !important;
+}
+
+h1[mat-dialog-title] {
+  margin-bottom: 0px;
 }

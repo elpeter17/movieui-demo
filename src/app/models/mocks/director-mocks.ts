@@ -8,16 +8,20 @@ export class DirectorMocks {
 
   private directors: Director[] = [{
     id: 1,
-    name: 'Tarantino'
+    name: 'Tarantino',
+    gender: 'M'
   }, {
     id: 2,
-    name: 'Ford Coppola'
+    name: 'Ford Coppola',
+    gender: 'M'
   }, {
     id: 3,
-    name: 'Anthony Russo'
+    name: 'Anthony Russo',
+    gender: 'M'
   }, {
     id: 4,
-    name: 'Joseph Russo'
+    name: 'Joseph Russo',
+    gender: 'M'
   }];
 
   public index(): Director[] {

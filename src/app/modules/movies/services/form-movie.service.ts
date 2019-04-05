@@ -13,7 +13,7 @@ export class FormMovieService {
     title: new FormControl('', [Validators.required, Validators.maxLength(50)]),
     year: new FormControl(2019, [Validators.required, Validators.max(2019)]),
     rating: new FormControl(0),
-    directors: new FormControl([], Validators.compose([Validators.required, Validators.pattern('.+')])),
+    directorIds: new FormControl([], Validators.compose([Validators.required, Validators.pattern('.+')])),
   });
 
   public initForm(forCreate: boolean, movie: Movie) {
@@ -22,7 +22,7 @@ export class FormMovieService {
       title: forCreate ? '' : movie.title,
       year: forCreate ? 2019 : movie.year,
       rating: forCreate ? 0 : movie.rating,
-      directors: forCreate ? [] : this.pluckDirectorIds(movie.directors)
+      directorIds: forCreate ? [] : this.pluckDirectorIds(movie.directors)
     });
   }
 

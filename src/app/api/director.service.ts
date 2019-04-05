@@ -8,8 +8,20 @@ import { Observable } from 'rxjs';
 })
 export class DirectorService extends ApiService {
 
-  public index(): Director[] | Observable<Director[]> {
-    return this.mocking ? this.directorMocks.index() : this.http.get<Director[]>(this.endpoints.directors);
+  public index(): Observable<Director[]> {
+    return this.http.get<Director[]>(this.endpoints.directors);
+  }
+
+  public create(director: Director): Observable<Director> {
+    return this.http.post<Director>(`${this.endpoints.directors}/${director.id}`, director);
+  }
+
+  public update(director: Director): Observable<Director> {
+    return this.http.put<Director>(`${this.endpoints.directors}/${director.id}`, director);
+  }
+
+  public delete(director: Director) {
+    return this.http.delete(`${this.endpoints.directors}/${director.id}`);
   }
 
 }

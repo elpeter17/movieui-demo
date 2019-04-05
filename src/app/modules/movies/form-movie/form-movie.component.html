@@ -18,8 +18,8 @@
       <option value="5">5</option>
     </select>
 
-    <label for="directors">Directores</label>
-    <select id="directors" formControlName="directors" multiple>
+    <label for="directorIds">Directores</label>
+    <select id="directorIds" formControlName="directorIds" multiple>
       <option *ngFor="let director of directors" [value]="director.id">
         {{ director.name }}
       </option>
