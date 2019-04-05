@@ -9,7 +9,7 @@ export class DirectorMocks {
   private directors: Director[] = [{
     id: 1,
     name: 'Tarantino',
-    gender: 'M'
+    gender: 'F'
   }, {
     id: 2,
     name: 'Ford Coppola',

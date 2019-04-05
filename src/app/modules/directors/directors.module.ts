@@ -7,6 +7,7 @@ import { ManageDirectorsDialogComponent } from './manage-directors-dialog/manage
 import { FormDirectorComponent } from './form-director/form-director.component';
 import { FormsModule } from '@angular/forms';
 import { DirectivesModule } from 'src/app/directives/directives.module';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { DirectivesModule } from 'src/app/directives/directives.module';
     MaterialModule,
     FormsModule,
     DirectivesModule,
+    PipesModule,
     DirectorsRoutes
   ],
   declarations: [
