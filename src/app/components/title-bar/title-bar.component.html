@@ -1,5 +1,6 @@
 <mat-toolbar color="primary">
-  <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
-    <span>Movie Demo</span>
+  <mat-toolbar-row fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+    <span (click)="goToMovies()">Movies</span>
+    <span (click)="goToDirectors()">Directors</span>
   </mat-toolbar-row>
 </mat-toolbar>
