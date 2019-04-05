@@ -28,15 +28,18 @@
     <mat-label>Género</mat-label>
     <input matInput placeholder="Género"
       [(ngModel)]="director.gender" id="gender" name="gender" #gender="ngModel"
-      required maxlength="1">
+      required maxlength="1" appOnlyRegexp="gender">
     <mat-icon matSuffix>category</mat-icon>
 
     <mat-error *ngIf="gender.invalid && (gender.dirty || gender.touched)">
       <div *ngIf="gender?.errors?.required">
         El género es requerido
       </div>
-      <div *ngIf="!name?.errors?.required && name?.errors?.maxlength">
+      <div *ngIf="!gender?.errors?.required && gender?.errors?.maxlength">
         Se permite máximo 1 caracter
+      </div>
+      <div *ngIf="!gender?.errors?.required && gender?.errors?.forbiddenChars">
+        Solo se permite la M o la F
       </div>
     </mat-error>
 

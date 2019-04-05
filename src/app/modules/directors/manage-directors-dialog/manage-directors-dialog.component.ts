@@ -1,7 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ManageDirectorsData } from '../classes/manage-directors-data';
-import { Director } from 'src/app/models/director.model';
 import { DirectorService } from 'src/app/api/director.service';
 
 @Component({
@@ -15,7 +14,17 @@ export class ManageDirectorsDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: ManageDirectorsData,
     private dialogRef: MatDialogRef<ManageDirectorsDialogComponent>,
     private directorService: DirectorService
-  ) { }
+  ) {
+    this.initDialog();
+  }
+
+  private initDialog() {
+    if (typeof this.data.director === 'undefined') {
+      this.data.director = {
+        id: null, name: '', gender: 'M'
+      };
+    }
+  }
 
   public onSubmit() {
     console.log(this.data.director);
@@ -27,7 +36,14 @@ export class ManageDirectorsDialogComponent {
   }
 
   private save() {
-
+    this.directorService.create(this.data.director).subscribe(
+      response => {
+        this.dialogRef.close(true);
+      }, error => {
+        alert('Error al crear director');
+        this.dialogRef.close(false);
+      }
+    );
   }
 
   private update() {
