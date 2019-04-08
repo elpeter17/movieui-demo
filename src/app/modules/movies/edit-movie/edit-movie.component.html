@@ -1,2 +1,3 @@
-<app-form-movie [forCreate]="false" [movie]="movie" (onSaveMovie)="saveMovie($event)">
+<app-form-movie *ngIf="movie && directors"
+  [forCreate]="false" [movie]="movie" [directors]="directors" (onSaveMovie)="saveMovie($event)">
 </app-form-movie>

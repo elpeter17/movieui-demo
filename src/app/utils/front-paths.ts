@@ -5,7 +5,5 @@ export const moviesPaths = {
 };
 
 export const directorPaths = {
-  directors: 'directors',
-  createDirector: 'directors/create',
-  editDirector: 'directors/:id/edit'
+  directors: 'directors'
 };

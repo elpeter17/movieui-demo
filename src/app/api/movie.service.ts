@@ -28,15 +28,15 @@ export class MovieService extends ApiService {
   public update(movie: Movie): Movie | Observable<Movie> {
     const update = this.mocking ?
       this.movieMocks.update(movie) :
-      this.http.put<Movie>(`${this.endpoints.movies}/${movie.id}`, movie);
+      this.http.put<Movie>(this.endpoints.movies, movie);
     return update;
   }
 
-  public delete(movie: Movie) {
+  public delete(movie: Movie): string | Observable<string> {
     if (this.mocking) {
-      this.movieMocks.delete(movie);
+      return this.movieMocks.delete(movie);
     } else {
-      this.http.delete<Movie>(`${this.endpoints.movies}/${movie.id}`);
+      return this.http.delete(`${this.endpoints.movies}/${movie.id}`, { responseType: 'text' });
     }
   }
 

@@ -15,27 +15,15 @@ export class FormMovieComponent implements OnInit {
 
   @Input() forCreate: boolean;
   @Input() movie: Movie;
+  @Input() directors: Director[];
   // tslint:disable-next-line: no-output-on-prefix
   @Output() onSaveMovie: EventEmitter<Movie> = new EventEmitter();
 
-  public directors: Director[];
-
   constructor(
-    private directorService: DirectorService,
     private service: FormMovieService
   ) { }
 
   ngOnInit() {
-    const resource = this.directorService.index();
-    if (isObservable(resource)) {
-      resource.subscribe(
-        response => {
-          this.directors = response;
-        }
-      );
-    } else {
-      this.directors = resource;
-    }
     this.service.initForm(this.forCreate, this.movie);
   }
 

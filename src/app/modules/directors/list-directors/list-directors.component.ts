@@ -7,6 +7,7 @@ import { MatTableDataSource, MatPaginator, MatSort, TransitionCheckState, MatDia
 import { DirectorMocks } from 'src/app/models/mocks/director-mocks';
 import { ManageDirectorsDialogComponent } from '../manage-directors-dialog/manage-directors-dialog.component';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { ConfirmationDialogComponent } from 'src/app/components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-list-directors',
@@ -86,7 +87,26 @@ export class ListDirectorsComponent {
   }
 
   public deleteDirector(director: Director) {
-
+    const deleteDialogRef = this.matDialog.open(ConfirmationDialogComponent, {
+      width: '50%', data: {
+        title: 'Eliminar director',
+        message: '¿Está seguro que desea eliminar director?',
+        buttonText: 'ELIMINAR'
+      }
+    });
+    deleteDialogRef.afterClosed().subscribe(confirmed => {
+      if (confirmed) {
+        this.directorService.delete(director).subscribe(
+          response => {
+            alert(response);
+            this.initComponent();
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      }
+    });
   }
 
 

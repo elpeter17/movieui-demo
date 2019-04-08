@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MovieService } from 'src/app/api/movie.service';
 import { isObservable } from 'rxjs';
 import { moviesPaths } from 'src/app/utils/front-paths';
+import { DirectorService } from 'src/app/api/director.service';
+import { Director } from 'src/app/models/director.model';
 
 @Component({
   selector: 'app-edit-movie',
@@ -13,9 +15,11 @@ import { moviesPaths } from 'src/app/utils/front-paths';
 export class EditMovieComponent {
 
   public movie: Movie;
+  public directors: Director[];
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private directorService: DirectorService,
     private movieService: MovieService,
     private router: Router
   ) {
@@ -29,6 +33,15 @@ export class EditMovieComponent {
     } else {
       this.movie = state.movieToEdit;
     }
+    this.directorService.index().subscribe(
+      response => {
+        this.directors = response;
+      },
+      error => {
+        console.log(error);
+
+      }
+    );
   }
 
   private getMovie() {
@@ -47,6 +60,7 @@ export class EditMovieComponent {
   }
 
   public saveMovie(movie: Movie) {
+    this.assignDirectors(movie);
     const resource = this.movieService.update(movie);
     if (isObservable(resource)) {
       resource.subscribe(
@@ -57,6 +71,13 @@ export class EditMovieComponent {
     } else {
       this.router.navigate([moviesPaths.movies]);
     }
+  }
+
+  private assignDirectors(movie: Movie) {
+    movie.directors = [];
+    movie.directorIds.forEach(directorId => {
+      movie.directors.push(this.directors.find(item => item.id === directorId));
+    });
   }
 
 }

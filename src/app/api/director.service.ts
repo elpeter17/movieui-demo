@@ -13,15 +13,15 @@ export class DirectorService extends ApiService {
   }
 
   public create(director: Director): Observable<Director> {
-    return this.http.post<Director>(`${this.endpoints.directors}/${director.id}`, director);
+    return this.http.post<Director>(this.endpoints.directors, director);
   }
 
   public update(director: Director): Observable<Director> {
-    return this.http.put<Director>(`${this.endpoints.directors}/${director.id}`, director);
+    return this.http.put<Director>(this.endpoints.directors, director);
   }
 
-  public delete(director: Director) {
-    return this.http.delete(`${this.endpoints.directors}/${director.id}`);
+  public delete(director: Director): Observable<string> {
+    return this.http.delete(`${this.endpoints.directors}/${director.id}`, { responseType: 'text' });
   }
 
 }

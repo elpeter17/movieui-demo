@@ -68,6 +68,7 @@ export class MovieMocks {
   public delete(movie: Movie) {
     const movieToDelete = this.movies.findIndex(item => movie.id === item.id);
     this.movies.splice(movieToDelete, 1);
+    return 'Movie deleted';
   }
 
   private assignDirectors(movie: Movie) {
