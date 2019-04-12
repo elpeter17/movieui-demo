@@ -4,6 +4,8 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { TitleBarComponent } from './title-bar.component';
+import { MaterialModule } from 'src/app/modules/material.module';
+import { Router } from '@angular/router';
 
 describe('TitleBarComponent', () => {
   let component: TitleBarComponent;
@@ -11,7 +13,13 @@ describe('TitleBarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TitleBarComponent ]
+      imports: [
+        MaterialModule
+      ],
+      declarations: [ TitleBarComponent ],
+      providers: [
+        { provide: Router, useValue: {} }
+      ]
     })
     .compileComponents();
   }));
