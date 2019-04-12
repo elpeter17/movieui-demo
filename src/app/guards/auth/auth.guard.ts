@@ -37,7 +37,7 @@ export class AuthGuard implements CanActivate {
   }
 
   private authenticated(): boolean {
-    return false;
+    return true;
   }
 
 }
