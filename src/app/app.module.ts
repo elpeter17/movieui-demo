@@ -7,8 +7,9 @@ import { MoviesModule } from './modules/movies/movies.module';
 import { ComponentsModule } from './components/components.module';
 import { MaterialModule } from './modules/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DirectorsModule } from './modules/directors/directors.module';
+import { RequestInterceptor } from '@utils/request-interceptor';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,13 @@ import { DirectorsModule } from './modules/directors/directors.module';
     MoviesModule,
     DirectorsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
