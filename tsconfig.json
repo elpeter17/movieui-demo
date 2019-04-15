@@ -17,6 +17,17 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@modules/*": ["./src/app/modules/*"],
+      "@directives/*": ["./src/app/directives/*"],
+      "@pipes/*": ["./src/app/pipes/*"],
+      "@api/*": ["./src/app/api/*"],
+      "@utils/*": ["./src/app/utils/*"],
+      "@components/*": ["./src/app/components/*"],
+      "@models/*": ["./src/app/models/*"],
+      "@mocks/*": ["./src/app/models/mocks/*"],
+      "@guards/*": ["./src/app/guards/*"]
+    }
   }
 }
