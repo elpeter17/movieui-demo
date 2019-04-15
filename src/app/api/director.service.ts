@@ -24,4 +24,8 @@ export class DirectorService extends ApiService {
     return this.http.delete(`${this.endpoints.directors}/${director.id}`, { responseType: 'text' });
   }
 
+  public indexMocks(): Director[] {
+    return this.directorMocks.index();
+  }
+
 }

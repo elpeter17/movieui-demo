@@ -31,7 +31,8 @@ export class CreateMovieComponent {
         this.directors = response;
       },
       error => {
-        console.log(error);
+        console.error(error);
+        this.directors = this.directorService.indexMocks();
       }
     );
   }
